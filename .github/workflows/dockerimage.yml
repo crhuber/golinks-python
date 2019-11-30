@@ -17,19 +17,19 @@ jobs:
       uses: anothrNick/github-tag-action@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    # - name: Build the api Docker image
-    #   run: docker build . --tag crhuber/golinks-api:{{ steps.bump_version_and_push_tag.outputs.new_tag }}
-    # - name: Tag api Docker image latest
-    #   run: docker tag crhuber/golinks-api:{{ steps.bump_version_and_push_tag.outputs.new_tag }} crhuber/golinks-api:latest
-    # - name: Build the frontend Docker image
-    #   run: docker build ./frontend/Dockerfile  --build-arg VUE_APP_API_BASE_URL="" --tag crhuber/golinks-frontend:{{ steps.bump_version_and_push_tag.outputs.new_tag }}
-    # - name: Tag frontend Docker image latest
-    #   run: docker tag crhuber/golinks-frontend:{{ steps.bump_version_and_push_tag.outputs.new_tag }} crhuber/golinks-frontend:latest  
-    - name: Publish to Registry
+    - name: Docker push api
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
         name: crhuber/golinks-api
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         tag_names: true
-
+    - name: Docker push frontend
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: crhuber/golinks-frontend
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        workdir: frontend
+        tag_names: true
+        buildargs: VUE_APP_API_BASE_URL=""
