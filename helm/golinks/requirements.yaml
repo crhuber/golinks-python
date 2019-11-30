@@ -1,0 +1,5 @@
+dependencies:
+  - name: mysql
+    version: 1.4.0
+    repository: "@stable"
+    condition: db.create

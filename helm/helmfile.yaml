@@ -1,0 +1,15 @@
+repositories:
+- name: golinks
+  url: https://raw.githubusercontent.com/crhuber/golinks/master/helm/golinks
+
+releases:
+  - name: golinks
+    chart: golinks/golinks
+    values:
+      - mysql.mysqlRootPassword: {{ env "MYSQLROOTPASS" }}
+      - mysql.mysqlUser: {{ env "MYSQLUSER" }}
+      - mysql.mysqlPassword: {{ env "MYSQLPASS" }}
+      - secrets.DATABASE_URL: mysql+pymysql://{{ env "MYSQLUSER" }}:{{ env "MYSQLPASS" }}@golinks-mysql:3306/golinks
+    version: 0.1.0
+    labels:
+      run_diff: true
