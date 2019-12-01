@@ -32,4 +32,3 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         workdir: frontend
         tag_names: true
-        buildargs: VUE_APP_API_BASE_URL=""
