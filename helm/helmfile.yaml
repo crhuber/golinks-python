@@ -5,11 +5,15 @@ repositories:
 releases:
   - name: golinks
     chart: golinks/golinks
-    values:
-      - mysql.mysqlRootPassword: {{ env "MYSQLROOTPASS" }}
-      - mysql.mysqlUser: {{ env "MYSQLUSER" }}
-      - mysql.mysqlPassword: {{ env "MYSQLPASS" }}
-      - secrets.DATABASE_URL: mysql+pymysql://{{ env "MYSQLUSER" }}:{{ env "MYSQLPASS" }}@golinks-mysql:3306/golinks
+    set:
+      - name: mysql.mysqlRootPassword
+        value: {{ requiredEnv "MYSQLROOTPASS" }}
+      - name: mysql.mysqlUser
+        value: {{ requiredEnv "MYSQLUSER" }}
+      - name: mysql.mysqlPassword
+        value: {{ requiredEnv "MYSQLPASS" }}
+      - name: secrets.DATABASE_URL
+        value: mysql+pymysql://{{ requiredEnv "MYSQLUSER" }}:{{ requiredEnv "MYSQLPASS" }}@golinks-mysql:3306/golinks
     version: 0.1.0
     labels:
       run_diff: true
