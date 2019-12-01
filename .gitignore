@@ -37,4 +37,4 @@ yarn-error.log*
 zappa_settings.json
 
 # helm
-*.tgz
+helm/golinks/charts/*.tgz
