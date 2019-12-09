@@ -19,6 +19,9 @@ import AddLinkForm from "@/components/AddLinkForm.vue";
 import MessageState from "@/components/MessageState";
 
 export default {
+  metaInfo: {
+    title: "Home"
+  },
   components: {
     Alert,
     AddLinkForm

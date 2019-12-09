@@ -9,6 +9,9 @@
 import axios from "axios";
 
 export default {
+  metaInfo: {
+    title: "Redirect"
+  },
   name: "Redirect",
   data() {
     return {

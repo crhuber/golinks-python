@@ -19,8 +19,16 @@
           <tbody>
             <tr v-for="(link, index) in links" :key="index">
               <td>
-                <!-- <router-link :to="'/' + link.keyword"> -->
-                <span class="tag is-medium is-primary">/{{ link.keyword }}</span>
+                <span
+                  class="tag is-medium is-primary"
+                  v-if="isProgrammaticKeyword(link.keyword)"
+                >/{{ link.keyword }}</span>
+                <router-link
+                  :to="{ name: 'redirect', params: { keyword: `${link.keyword}`}}"
+                  v-else
+                >
+                  <span class="tag is-medium is-primary">/{{ link.keyword }}</span>
+                </router-link>
               </td>
               <td>{{ link.destination_url }}</td>
               <td>{{ link.description }}</td>
@@ -37,6 +45,9 @@
 import axios from "axios";
 
 export default {
+  metaInfo: {
+    title: "Group"
+  },
   components: {},
   data() {
     return {
@@ -59,6 +70,9 @@ export default {
           // no group results found so push back to home
           this.$router.push({ name: "home" });
         });
+    },
+    isProgrammaticKeyword(keyword) {
+      return keyword.includes("%s");
     }
   },
   created() {

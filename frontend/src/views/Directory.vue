@@ -64,6 +64,9 @@ import SearchBox from "../components/SearchBox.vue";
 import MessageState from "../components/MessageState";
 
 export default {
+  metaInfo: {
+    title: "Directory"
+  },
   components: {
     Alert: Alert,
     AddLinkModal: AddLinkModal,
