@@ -10,14 +10,14 @@ api:
   image:
     repository: crhuber/golinks-api
     tag: latest
-    pullPolicy: IfNotPresent
+    pullPolicy: Always
   containerPort: 5000
 
 frontend:
   image:
     repository:  crhuber/golinks-frontend
     tag: latest
-    pullPolicy: IfNotPresent
+    pullPolicy: Always
   containerPort: 80
 
 
