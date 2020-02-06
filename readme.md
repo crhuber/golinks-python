@@ -1,7 +1,38 @@
 
 # Golinks
-Golinks is an internal URL shortener. If you’re on the company network, you can type in <code>go/keyword</code> in your browser, and that will redirect you to some other site.
+Golinks is an internal URL shortener that organizes your company links into easily rememberable keywords. If you’re on the company network, you can type in <code>go/keyword</code> in your browser, and that will redirect you to some other site.
+The backend api is written and python and the frontend in Vue.js.
 
+
+## Screenshots
+
+<p align="left">
+  <img height="150px" src="./ss1.png"  alt="Adding a new link" title="Adding a new link">
+</p>
+<p align="left">
+  <img height="150px" src="./ss2.png"  alt="Adding a new link" title="Adding a new link">
+</p>
+<p align="left">
+  <img height="150px" src="./ss3.png"  alt="Adding a new link" title="Adding a new link">
+</p>
+
+## FAQ
+
+* How can I see all the links available
+
+    http://go/directory
+
+* How do I see whats behind a link?
+
+    You can preview what lies behind a short link. Add a + at the end of your link to view more about it before being redirected
+
+* How do nested keywords work?
+
+    Nested keywords like eng/handbook and eng/help group together and get a landing page at eng
+
+* How do programmatic links work?
+
+    Create short links that inject variables by using %s. For example: gh/%s to link to github.com/%s
 
 ## Running locally
 
